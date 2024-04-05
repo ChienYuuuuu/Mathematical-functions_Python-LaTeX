@@ -1,0 +1,515 @@
+\documentclass[12pt, a4paper]{article} 
+\input{preamble_CJK}
+
+\title{奧妙之數學函數：圖像與特性的探索}
+\author{{\SM 周芊妤}}
+\date{{\TT \today}} 	 
+\begin{document}
+\maketitle
+\fontsize{12}{22 pt}\selectfont
+
+在數學式界中，涵蓋了眾多的數學函數，其中一些特殊的式子所呈現的圖形擁有獨特的規律和特性。透過深入瞭解這些\textbf{數學函數圖形與特性}，我們可以更加深入地探索數學世界中的奧妙之處。這些函數的特性與圖像，彷彿是數學世界的謎題，等待著我們一一解開。透過這樣的探索與學習，我們能夠拓展自己的數學視野，並啟發出更多創新而美妙的數學應用。
+
+\section{$\sin(x)$函數的特例}
+\begin{equation}\label{eq:equation_1}
+f(x) = \frac{\sin(x)}{x}, \;-3\pi \leq x \leq 3\pi 
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{poly_1.eps}
+\caption{$f(x)=\frac{\sin(x)}{x}, \;-3\pi \leq x \leq 3\pi $}
+\label{fig:poly_1.eps}
+\end{figure}
+
+由圖\;\ref{fig:poly_1.eps}\;我們可以知道\;$ \lim_{x\rightarrow 0} f(x) = 1$。接下來我們加入兩個數學式一起做判斷:
+\begin{equation}\label{eq:equation_2}
+g(x) = \frac{\sin(x^2)}{x}, \;-3\pi \leq x \leq 3\pi 
+\end{equation}
+
+\begin{equation}\label{eq:equation_3}
+h(x) = \frac{\sin^2(2x)}{x^2}, \;-3\pi \leq x \leq 3\pi 
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\subfloat[$g(x)=\frac{\sin(x^2)}{x}$]{
+\includegraphics[scale=0.41]{poly_18.eps}}
+\subfloat[$h(x)=\frac{\sin^2(2x)}{x^2}$]{
+\includegraphics[scale=0.41]{poly_19.eps}}
+\caption{$\frac{\sin(x^2)}{x},\;\frac{\sin^2(2x)}{x^2}$\;兩公式的比較}
+\label{fig:parallel}
+\end{figure}
+
+在這邊我們使用了羅必達法則來計算函數值\;:\textbf{羅必達法則(L'Hôpital's rule)}\\
+定義\;:\;羅必達法則可求出特定函數趨近於某數的極限值。
+兩函數\;$f(x)$\;及\;$g(x)$\;在以\;$x=c$\;為端點的開區間可微，\;$\lim_{x\rightarrow c} \frac{f'(x)}{g'(x)} \in \mathbb{R}$\;且\;$g'(x)\neq 0$\;，若\;$\lim_{x\rightarrow c} f(x)=\lim_{x\rightarrow c} g(x)=0$\;或\;$\lim_{x\rightarrow c} \lvert f(x) \rvert=\lim_{x\rightarrow c} \lvert g(x) \rvert=\infty$\;其中一者成立，則稱欲求的極限\;$\lim_{x\rightarrow c} \frac{f(x)}{g(x)}$\;為未定式。此時羅必達法則表示了\;$\lim_{x\rightarrow c} \frac{f(x)}{g(x)}=\lim_{x\rightarrow c} \frac{f'(x)}{g'(x)}$\;。對於不符合上述分數形式的未定式，可以通過運算轉為分數形式，再以羅必達法則求其值。由圖\;\ref{fig:poly_2.eps}\;我們可以知道\;$ \lim_{x\rightarrow 0} g(x) = 0$\;以及\;$ \lim_{x\rightarrow 0} h(x) = 4$，並且我們是用下列python語法來畫出極限值的點\;:
+\begin{lstlisting}
+plt.scatter(0, 1, color='#FF359A', marker='o')
+plt.text(0, 1.1, '(0, 1)', fontsize=10, color='#FF359A', va='bottom', ha='center')
+plt.scatter(0, 4, color='#4A4AFF', marker='o')
+plt.text(0.5, 3.97, '(0, 4)', fontsize=10, color='#4A4AFF', va='bottom', ha='left')
+plt.scatter(0, 0, color='#007979', marker='o')
+plt.text(0.2, -0.25, '(0, 0)', fontsize=10, color='#007979', va='bottom', ha='left')
+\end{lstlisting}
+在這邊我們來驗證一下我們要求的極限值是否正確\;:
+\begin{align}
+f(x)&=\lim_{x\rightarrow 0}\frac{\sin(x)}{x}=\lim_{x\rightarrow 0}\frac{\frac{\text{d}}{\text{d}x}\sin(x)}{\frac{\text{d}}{\text{d}x}x}=\lim_{x\rightarrow 0}\frac{cos(x)}{1}=cos(0)=1
+\\\notag
+\\
+g(x)&= \lim_{x\rightarrow 0}\frac{\sin(x^2)}{x}=\lim_{x\rightarrow 0}\frac{2x\cos(x^2)}{1}=2\times 0\times cos(0)=0
+\\\notag
+\\
+h(x)&=\lim_{x\rightarrow 0}\frac{\sin^2(2x)}{x^2}=\lim_{x\rightarrow 0}\frac{4\sin(2x)}{2x}=\lim_{x\rightarrow 0}\frac{8\cos(2x)+4sin(2x)}{2}\\\notag\\\notag&=\frac{8\cos(0)+4\sin(0)}{2}=4
+\end{align}
+
+使用羅必達法則所算出來的極限值與我們使用圖形所觀察到的極限值相同，因此也驗證了結果正確的。
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{poly_2.eps}
+\caption{合併$f(x),\;g(x),\;h(x)$}
+\label{fig:poly_2.eps}
+\end{figure}
+
+\section{Logistic 函數}
+\begin{equation}\label{eq:equation_2}
+f(x)=\frac{e^{\alpha x}}{e^{\alpha x}+1},\;\alpha=1
+\end{equation}
+
+由圖\;\ref{fig:poly_3.eps}，我們可以看出此函數有兩條漸近線\;$y=0$\;以及\;$y=1$\;，分別代表了\\\;$\lim_{x\rightarrow -\infty} f(x)=0$\;以及\;$\lim_{x\rightarrow \infty} f(x)=1$\;。隨著x的增加會有向上爬升的趨勢(Increasing Trend)，在紫色箭頭指的方向我們可以看出\;$f(x)$\;向上爬升的趨勢越來越緩慢，直到靠近漸近線\;$y=1$\;時趨於平緩，同時，在綠色箭頭指的方向我們可以看出\;$f(x)$\;向上爬升的趨勢越來越快速，從靠近漸近線\;$y=0$\;時的平緩逐漸增加趨勢為快速上升。接下來，我們試著調整\;$\alpha$\;的大小，我們分別使用了\;$\alpha =0.5$\;以及\;$\alpha =5$\;來做觀察。在此，我們是用下列python語法來畫出兩個箭頭\;:
+\begin{lstlisting}
+plt.arrow(-8, 0.12, 2.5, -0.05, head_width=0.05, head_length=1.5, fc='g', ec='g')
+plt.arrow(8, 0.88, -2.5, 0.05, head_width=0.05, head_length=1.5, fc='#8600FF', ec='#8600FF')
+\end{lstlisting}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{poly_3.eps}
+\caption{$f(x)=\frac{e^{\alpha x}}{e^{\alpha x}+1}$}
+\label{fig:poly_3.eps}
+\end{figure}
+
+在圖\;\ref{fig:paralle2_1}\;(a)\;中我們觀察到\;$f(x)$\;在\;$\alpha=0.5$\;時，在紫色箭頭以及綠色箭頭指的方向中\;$f(x)$\;向上爬升的趨勢相較緩慢，在靠近漸近線\;$y=0$\;以及\;$y=1$\;時會趨於平緩，也就是說\;$f(x)$\;會滿足\;$\lim_{x\rightarrow -\infty} f(x)=0$\;以及\;$\lim_{x\rightarrow \infty} f(x)=1$\;；反之，在圖\;\ref{fig:paralle2_1}\;(b)\;中，\;$f(x)$\;在\;$\alpha=5$\;時，在紫色箭頭以及綠色箭頭指的方向中\;$f(x)$\;向上爬升的趨勢相較快速，但在靠近漸近線\;$y=0$\;以及\;$y=1$\;時亦會趨於平緩，也就是說\;$f(x)$\;也會滿足\;$\lim_{x\rightarrow -\infty} f(x)=0$\;以及\;$\lim_{x\rightarrow \infty} f(x)=1$\;。也就是說，當\;$\alpha$\;越小時圖形的向上爬升趨勢越不明顯；
+\;$\alpha$\;越大時圖形的向上爬升趨勢越明顯。\\
+這是因為當\;$\alpha$\;越小時，分母中的\;$e^{\alpha x}$\;變化相對緩慢，導致分母的值不會增長得很快，因此分母的\;$+1$\;相對起來作用比較大，因此分母的值與分子比起來相對較小，整個分式的值就會向\;$0$\;靠近；反之，當\;$\alpha$\;越大時，分母中的\;$e^{\alpha x}$\;會在\;$x$\;變大時增長得非常快，這使得分母變得非常大，因此分母的\;$+1$\;相對起來沒有什麼作用，導致分子與分母的數值變得很接近，整個分式的值即會向\;$1$\;靠近。總而言之，當\;$\alpha$\;越大，分母中的\;$e^{\alpha x}$\;對整個分式的值影響越大，使得函數的增長趨勢更為明顯；而當\;$\alpha$\;越小，分母中的\;$e^{\alpha x}$\;影響相對較小，使得函數的增長趨勢不那麼明顯。
+
+\begin{figure}[h]
+\centering
+\subfloat[$\alpha=0.5$]{
+\includegraphics[scale=0.41]{poly_4.eps}}
+\subfloat[$\alpha=5$]{
+\includegraphics[scale=0.41]{poly_5.eps}}
+\caption{調整\;$\alpha$\;的大小做觀察}
+\label{fig:paralle2_1}
+\end{figure}
+
+\section{指數衰減的正弦函數}
+\begin{equation}\label{eq:equation_3}
+f(x)=e^{-\frac{x}{10}}\sin(x)
+\end{equation}
+
+由圖\;\ref{fig:parallel2_4}\;(a)\;我們可以看出此函數圖形隨著\;$x$\;的增加有震盪幅度逐漸變小的趨勢(紅色箭頭)，最後會趨近於\;$y=0$。這是因為函數\;$f(x)=e^{-\frac{x}{10}}\sin(x)$\;是一個指數函數和正弦函數的乘積。當\;$x$\;增加時，正弦函數\;$sin(x)$\;始終在\;$\interval{-1}{1}$\;的範圍中，而指數函數\;$e^{-\frac{x}{10}}$\;會迅速衰減，使得整個函數的震盪幅度逐漸變小。意思是指數項的衰減導致了正弦函數的振幅逐漸減小，這種情況下，指數項起到了一個「縮放」的作用，使得正弦函數的變化趨於平緩。並且當\;$x\rightarrow \infty$\;時，$e^{-\frac{x}{10}}\rightarrow 0$，也就是說，$f(x)=e^{-\frac{x}{10}}\sin(x)\rightarrow0$\;。因為此函數\;$f(x)$\;有震盪衰減以及具有漸近線的特性，因此當這兩個特性結合起來才會使得\;$f(x)$\;在\;$x$\;趨於\;$\infty$\;時會趨近於\;$0$\;並產生一系列震盪。\\
+若我們做一些調整把函數改寫成\;$g(x)$\;來做觀察:
+\begin{equation}\label{eq:equation_4}
+g(x)=e^{\frac{x}{10}}\sin(x)
+\end{equation}
+由圖\;\ref{fig:parallel2_4}\;(b)\;我們會發現圖形左右相反過來了，變成\;$x$\;遞增時\;$g(x)$\;會有震盪幅度逐漸變大的趨勢(紅色箭頭)的趨勢，當\;$x$\;趨近\;$-\infty$\;時，$g(x)$\;會趨近於\;$0$。\\
+這是因為函數\;$g(x)=e^{\frac{x}{10}}\sin(x)$\;是一個指數函數和正弦函數的乘積。當\;$x$\;增加時，正弦函數\;$sin(x)$\;始終在\;$\interval{-1}{1}$\;的範圍中，而指數函數\;$e^{\frac{x}{10}}$\;會迅速增加，使得整個函數的震盪幅度逐漸變大。意思是指數項的增加導致了正弦函數的振幅逐漸變大，這種情況下，指數項起到了一個「縮放」的作用，使得正弦函數的變化更大。並且當\;$x\rightarrow -\infty$\;時，$e^{\frac{x}{10}}\rightarrow 0$，也就是說，$g(x)=e^{\frac{x}{10}}\sin(x)\rightarrow0$\;。因為此函數\;$f(x)$\;有震盪衰減以及具有漸近線的特性，因此當這兩個特性結合起來才會使得\;$f(x)$\;在\;$x$\;趨於\;$- \infty$\;時會趨近於\;$0$\;並且會產生一系列震盪。
+
+\begin{figure}[h]
+\centering
+\subfloat[$f(x)=e^{-\frac{x}{10}}\sin(x)$]{
+\includegraphics[scale=0.41]{poly_6.eps}}
+\subfloat[$g(x)=e^{\frac{x}{10}}\sin(x)$]{
+\includegraphics[scale=0.41]{poly_7.eps}}
+\caption{調整指數正負號}
+\label{fig:parallel2_4}
+\end{figure}
+
+\section{分母趨近\;$0$\;的極限值}
+\begin{equation}\label{eq:equation_4}
+f(x)=\frac{1}{x-2}
+\end{equation}
+
+由圖\;\ref{fig:poly_8.eps}\;我們可以看到\;$f(x)=\frac{1}{x-2}$\;在\;$x=2$\;以外的其他點都有值，但當$f(x)=\frac{1}{x-2}$\;在\;$x=2$\;的時候是沒有值的，這是因為當\;$x=2$\;時分母\;$x-2$\;會\;$=0$\;，這在數學上是沒有定義的，也會使\;$f(x)$\;失去定義，因此，\;$x=2$\;不屬於\;$f(x)$\;的定義域。\\
+\;$f(x)$\;具有兩條漸近線，分別是垂直漸近線\;$x=2$\;以及水平漸近線\;$y=0$\;，使得當\;$x$\;趨近於\;$0$\;時，\;$f(x)$\;的右極限為\;$\infty$\;而左極限為\;$- \infty$\;；當\;$x$\;趨近於\;$\infty$\;以及\;$- \infty$\;時，\;$f(x)$\;的極限為\;$0$\;。也就是，\;$\lim_{x\rightarrow 2^{+}} f(x) = \infty$\;、\;$\lim_{x\rightarrow 2^{-}} f(x) = - \infty$\;、\;$\lim_{x\rightarrow \infty} f(x) = 0$\;、\;$\lim_{x\rightarrow - \infty} f(x) = 0$\;。由於\;$f(x)$\;中只包含\;$x-2$\;的冪次為\;$-1$\;的項，因此\;$f(x)$\;為一奇函數。
+
+在圖\;\ref{fig:poly_8.eps}\;中我們是用下列python語法來畫出兩條漸進線\;:
+\begin{lstlisting}
+plt.axhline(y=0, color='r', linestyle='--', label='Asymptote y=0')
+plt.axvline(x=2, color='g', linestyle='--', label='Asymptote x=2')
+\end{lstlisting}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{poly_8.eps}
+\caption{$f(x)=\frac{1}{x-2}$}
+\label{fig:poly_8.eps}
+\end{figure}
+
+\section{反函數的特性}
+\begin{equation}\label{eq:equation_5}
+f(x)=x^3+2
+\end{equation}
+
+\begin{equation}\label{eq:equation_12}
+f^{-1}(x)=(x-2)^{\frac{1}{3}}
+\end{equation}
+
+$f(x)$\;以及\;$f^{-1}(x)$\;具有以下特性\;:
+\begin{enumerate}
+\item $f(x)$\;以及\;$f^{-1}(x)$\;互為反函數，即\;$f(f^{-1}(x))=x$、$f^{-1}(f(x))=x$\;。
+\item $f(x)$\;的定義域為所有實數，值域也為所有實數；\;$f^{-1}(x)$\;的定義域為\;$(-\infty, \infty)$\;值域為所有實數。
+\item $f(x)$、$f^{-1}(x)$\;:\;單調遞增函數，表示當\;$x_1<x_2$\;時，\;$f(x_1)<f(x_2)$\;。
+\item $f(x)$\;以及\;$f^{-1}(x)$\;在\;$x \rightarrow \infty$\;以及\;$x \rightarrow -\infty$\;時都會趨向\;$\infty$\;，因此它是無界的。
+\item 由於\;$f(x)$\;以及\;$f^{-1}(x)$\;互為反函數，因次他們的圖形會對稱於\;$x=y$\;。
+\end{enumerate}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{poly_17.eps}
+\caption{函數與反函數}
+\label{fig:poly_17.eps}
+\end{figure}
+
+\section{常態分佈}
+\begin{equation}
+f(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{(x-3)^2}{2}}\label{eq:equation_30}
+\end{equation} 
+
+方程式\;(\ref{eq:equation_30})\;是在描述一個以\;$x=3$\;為均值的常態分佈，我們可以看出此圖形是以紅色虛線\;$x=3$\;為中線，構成左右對稱之單峰、鐘型曲線分佈。$f(x)$\;是一個隨機變量(random variable)\;$x$\;的機率密度函數，其中，\;$\frac{1}{\sqrt{2\pi}}$\;是用來確保常態分佈的面積為1的歸一化常數，而\;$e^{-\frac{(x-3)^2}{2}}$\;描述了常態分佈的形狀，其中\;$3$\;是分佈的均值，分母中的\;$2$\;是方差，決定了分佈的峰值和寬度值。在此，我們是用下列Python語法來畫出常態分佈底下面積\;:
+\begin{lstlisting}
+plt.fill_between(x, y, color='pink', alpha=0.4)
+\end{lstlisting}
+
+\textbf{常態分佈函數}\;:\\
+將一連續變項之觀察值發生機率以圖呈現其分佈情形，並且具有以下特性:
+\begin{enumerate}
+\item 隨機變數(random variable)\;$X$\;具有以下pdf\;:
+\begin{equation}
+f_x(x) = \frac{1}{2\pi \sigma} exp(-\frac{(x-\mu)^2}{2\sigma ^2}),\; x \in \mathbb{R}
+\end{equation}
+\item 隨機變數(random variable)\;$x$\;的範圍為\;$(-\infty, \infty)$\;。
+\item 若隨機變數\;$X$\;為常態分佈，則稱\;$X\sim N(\mu,\;\sigma ^2)$\;
+\subitem $E(X)\;=\;\mu$
+\subitem $Var(X)\;=\;\sigma ^2$
+\subitem $mgf\;:M_x(t)\;=\;e^{\mu t+\frac{\sigma ^2 t^2}{2}}$
+\item 常態分佈的圖形是以平均數(\;$\mu$\;)為中線，構成左右對稱之單峰、鐘型曲線分佈。
+\item 觀察值(\;$X$\;)之範圍為負無限大至正無限大之間。
+\item 若我們把方程式\;\ref{eq:equation_30}\;在\;$x$\;的區間範圍內積分起來，會得到圖\;\ref{fig:poly_9.eps}\;下的面積(粉色區域)為\;$1$\;，也就是說\;$\int_{-\infty}^{\infty} \frac{1}{2\pi \sigma} exp(-\frac{(x-\mu)^2}{2\sigma ^2})=1$\;。
+\item 變項之平均數、中位數和眾數為同一數值。
+\item 標準偏差(standard deviation)(參考圖\;\ref{fig:poly_16.eps})：
+\subitem $68.3\%$\;的數值，落在平均數 ± 1個標準差間；
+\subitem $95.4\%$\;的數值，落在平均數 ± 2個標準差間；
+\subitem $99.7\%$\;的數值，落在平均數 ± 3個標準差間。\\
+\end{enumerate}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{poly_9.eps}
+\caption{$f(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{(x-3)^2}{2}}$}
+\label{fig:poly_9.eps}
+\end{figure}
+
+\textbf{標準常態分佈\;:}
+\begin{enumerate}
+\item 隨機變數(random variable)\;$Z$\;具有以下pdf\;:
+\begin{equation}\label{eq:quation_13}
+f_z(z) = \frac{1}{2\pi} exp(-\frac{z^2}{2}),\; z \in \mathbb{R}
+\end{equation}
+\item 隨機變數(random variable)\;$z$\;的範圍為\;$(-\infty, \infty)$\;。
+\item 若隨機變數\;$Z$\;為標準常態分佈，則\;$Z\;=\;\frac{X-\mu}{\sigma}\sim N(0,\; 1)$\;
+\subitem $E(Z)\;=\;0$
+\subitem $Var(Z)\;=\;1$
+\subitem $mgf\;:M_z(t)\;=\;e^{\frac{t^2}{2}}$
+\item 圖\;\ref{fig:poly_16.eps}\;為標準常態分佈的圖形，很明顯的，我們可以看出圖形是以綠色虛線(\;$\mu\;=\;0$\;)為中線，構成左右對稱之單峰、鐘型曲線分佈。
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{poly_16.eps}
+\caption{$f(z) = \frac{1}{\sqrt{2\pi}}e^{-\frac{(z)^2}{2}}$}
+\label{fig:poly_16.eps}
+\end{figure}
+\item 若我們把方程式\;\ref{eq:quation_13}\;在\;$x$\;的區間範圍內積分起來，會得到\;$f(z)$\;圖形下的面積(藍色區域)為\;$1$\;，也就是說\;$\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}}e^{-\frac{(z)^2}{2}}=1$\;。
+\end{enumerate}
+
+\section{多項式函數}
+\begin{equation}\label{eq:equation_7}
+f(x) = 3x^3-x^4
+\end{equation}
+
+因為\;$f(-x)\;\neq\;-f(x)$\;且\;$f(-x)\;\neq\;f(x)$\;，所以函數\;(\ref{eq:equation_7})\;既不是奇函數也不是偶函數。接下來，我們想要尋找此函數的最大值\;:
+\begin{enumerate}
+\item[$1$.]
+為了找到極值，我們需找\;$f'(x)=0$\;的解，\;$f'(x)=9x^2-4x^3=0$\;解出\\\;$x=0$\;或\;$x=2.25$\;。
+\item[$2$.]
+接下來，我們可以使用二階導數測試來確定這些點是極大值還是極小值。\;$f''(x)=18x-12x^2$\;，我們要分別計算\;$f''(0)$\;和\;$f''(2.25)$\;。
+\item[$3$.]
+$f''(0)=0$\;，這表示在\;$x=0$\;的地方有一個反曲點\footnote{反曲點（Inflection Point）是指曲線在該點的曲率改變方向的位置，也就是曲線從凹轉凸或從凸轉凹的地方，更具體地說，一個函數的反曲點位於該函數的二階導數為零的地方，且在該點的一階導數也存在。}(非最大值所在處)；\;$f''(2.25)=-20.25$\;，由於\;$f''(0)<0$\;，代表在\;$x=2.25$\;處有一個極大值，\;$f(2.25)=8.54$\;，因此我們的到此函數的最大值為圖示上的粉色點\;$(2.25,\;8.54)$\;。
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{poly_10.eps}
+\caption{$f(x) = 3x^3-x^4$}
+\label{fig:poly_10.eps}
+\end{figure} 
+
+實數根(Real root)會發生在\;$f(x)=0$\;的時候。\;$f(x)=0$\;意味著\;$3x^3-x^4=x^3(3-x)=0$\;，因此可以得到實數根為\;$x=0$\;以及\;$x=3$\;，由於\;$x^3(3-x)=0$\;中的\;$x$\;有\;$3$\;次方，所以\;$x=0$\;為重根(3次)，我們也可以說\;$f(x)$\;的實數跟為\;$\{0,\;0,\;0,\;3\}$\;或\;$\{0,\;3\}$\;。
+
+\section{自然對數函數的特例}
+\begin{equation}\label{eq:equation_8}
+f(x) = \frac{lnx}{x^2}
+\end{equation}
+
+此函數\;(\ref{eq:equation_8})\;的特性如下:
+\begin{enumerate}
+\item 定義域\;：\;$x>0$\;，因為自然對數函數\;$ln(x)$\;的定義範圍是\;$x>0$\;，且\;$x^2$\;在分母也不能為零。
+\item 最大值\;:\;$f(\sqrt{e})= \frac{1}{2e}$\;(圖\;\ref{fig:poly_11.eps}\;中的水藍色點)。
+\item 漸近線\;:
+\subitem 水平漸近線(紅色虛線)\;:\;$y=0$\;。
+\subitem 垂直漸近線(粉色虛線)\;:\;$x=0$\;。
+\item 極限值
+\subitem 由圖\;\ref{fig:poly_11.eps}\;可以看出\;$\lim_{x \rightarrow \infty} f(x)=0$\;。
+\subitem 由圖\;\ref{fig:poly_11.eps}\;可以看出\;$\lim_{x \rightarrow 0^+} f(x)=-\infty$\;。
+\item 爬升趨勢\;:\;由綠色箭頭指向位置可以看出函數向上爬升的趨勢隨著\;$x$\;的增加逐漸趨於平緩。
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.73]{poly_11.eps}
+\caption{$f(x) = \frac{lnx}{x^2}$}
+\label{fig:poly_11.eps}
+\end{figure} 
+
+\section{階梯函數}
+\begin{equation}\label{eq:equation_9}
+f(x) =\begin{cases}1, & 1 \leq x < 3 \\2, &3 \leq x < 5 \\3, &5 \leq x < 7 \end{cases}
+\end{equation} 
+
+函數\;(\ref{eq:equation_9})\;的特性如下\;:
+\begin{enumerate}
+\item 此函數為分段函數，在不同的\;$x$\;區間內會對應到不同的\;$f(x)$\;。
+\subitem 在\;$X \in [1,\;3)$\;內，\;$f(x)=1$\;。
+\subitem 在\;$X \in [3,\;5)$\;內，\;$f(x)=2$\;。
+\subitem 在\;$X \in [5,\;7)$\;內，\;$f(x)=3$\;。
+\item 此函數的定義域為\;:\;$1 \leq X<7$\;。
+\item 此函數的值域為\;${1,\;2,\;3}$\;，分別對應於不同的\;$x$\;區間。
+\item 該函數在每個\;$x$\;的區間都是連續的，但在每個區間的右邊界處為不連續，可以透過圖\;\ref{fig:poly_20.eps}\;上粉色虛線(\;$x=3$\;)以及紫色虛線(\;$x=5$\;)上的實心點以及空心點看出不連續。
+\item 此函數既不是奇函數也不是偶函數。
+\item 此函數的極限值\;:
+\subitem $ \lim_{x\rightarrow 1^+} f(x) = 1$\;、\;$ \lim_{x\rightarrow 3^-} f(x) = 1$、
+\subitem $ \lim_{x\rightarrow 3^+} f(x) = 2$\;、\;$ \lim_{x\rightarrow 5^-} f(x) = 2$、
+\subitem $ \lim_{x\rightarrow 5^+} f(x) = 3$\;、\;$ \lim_{x\rightarrow 7^-} f(x) = 3$。
+\end{enumerate}
+
+在圖\;\ref{fig:poly_20.eps}\;中我們是用下列python語法來分段畫出函數\;:
+\begin{lstlisting}
+x1=np.linspace(1,3,200)
+y1=[1]*len(x1)
+x2=np.linspace(3,5,200)
+y2=[2]*len(x2)
+x3=np.linspace(5,7,200)
+y3=[3]*len(x3)
+\end{lstlisting}
+並且在圖\;\ref{fig:poly_20.eps}\;中我們是用下列python語法來畫出實心、虛心點\;:
+\begin{lstlisting}
+plt.plot(x1[0], y1[0],marker='o',color='b', markersize=10)
+plt.plot(x1[-1], y1[-1],marker='o',markerfacecolor='none',markeredgecolor='b', markersize=10)
+\end{lstlisting}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.35]{poly_20.eps}
+\caption{$f(x) =\begin{cases}1, & 1 \leq x < 3 \\2, &3 \leq x < 5 \\3, &5 \leq x < 7 \end{cases}$}
+\label{fig:poly_20.eps}
+\end{figure}
+
+\section{單位圓}
+\begin{equation}\label{eq:equation_10}
+x^2+y^2=1
+\end{equation}
+
+方程式\;(\ref{eq:equation_10})\;為一正圓形方程，此方程式的特性如下\;:
+\begin{enumerate}
+\item 此方程是一個以\;$(0,\;0)$\;為中心點，半徑(紫色線)為\;$1$\;所構成之正圓形函數。
+\item 此方程的面積(藍色區域)為\;$1 \times 1 \times \pi =\pi$\;；邊長為\;$2 \times \pi \times 1=2\pi$\;；直徑為\;$2$\;。
+\item 此方程的定義域為滿足\;$x^2+y^2=1$\;的所有實數\;$(x,y)$\;。
+\item 對稱性\;:\;此方程會對稱於任何一條經過原點\;$(0,0)$\;的直線。
+\subitem 對稱於\;$x$\;軸:如果\;$(x, y)$\;符合方程，則它的對稱點為\;$(x,-y)$\;。
+\subitem 對稱於\;$y$\;軸:如果\;$(x, y)$\;符合方程，則它的對稱點為\;$(-x,y)$\;。
+\item 這個方程式沒有垂直或水平的漸近線，因為它是有界的。
+\end{enumerate}
+
+圖\;\ref{fig:parallel2_2}\;(a);中，我們是將座標軸放在兩側來看，而圖\;\ref{fig:parallel2_2}\;(b)\;中，我們則是將座標軸放在中間來看，可以更加清楚的對應每個點的位置。
+
+在圖\;\ref{fig:parallel2_2}\;(b)\;中我們是用下列python語法來將坐標軸移至中間\;:
+\begin{lstlisting}
+ax = plt.gca()
+ax.spines['top'].set_visible(False) 
+ax.spines['right'].set_visible(False)
+ax.spines['bottom'].set_position(('data',0))
+ax.spines['left'].set_position(('data',0))
+\end{lstlisting}
+
+\begin{figure}[H]
+\centering
+\subfloat[坐標軸在旁邊\label{subfig:parallel_1_a}]{
+\includegraphics[scale=0.6]{poly_12.eps}}
+\subfloat[坐標軸在中間\label{subfig:parallel_1_b}]{
+\includegraphics[scale=0.6]{poly_13.eps}}
+\caption{坐標軸在不同位置的呈現}
+\label{fig:parallel2_2}
+\end{figure}
+
+\section{單位正方形}
+單位正方形是一個邊長為\;$1$\;、面積也為\;$1$\;的正方形。
+
+圖\;\ref{fig:parallel_2}\;是一個邊長為\;$1$\;且中心點為\;$(0,0)$\;的正方形，它的特性如下\;:
+\begin{enumerate}
+\item 正方形邊長為\;$1$\;、面積為\;$1$\;、兩條對角線長為\;$\sqrt{2}$\;。
+\item 對稱性\;:\;正方形具有四條對稱軸，分別為\;$x=0$、$y=0$、$x=y$、$x=-y$\;，這意味著可以將正方形分為八個相等面積的小三角形(也就是圖\;\ref{fig:parallel_2}\;中不同顏色的八個小三角形)。
+\item  兩條對角線\;$x=y$\;以及\;$x=-y$\;互相垂直且相等。
+\end{enumerate}
+
+圖\;\ref{fig:parallel2_3}\;\subref{subfig:parallel_2_a}\;中，我們是將座標軸放在兩側來看，而圖\;\ref{fig:parallel_2}\;\subref{subfig:parallel_2_b}\;中，我們則是將座標軸放在中間來看，可以更加清楚的對應每個點的位置。
+
+在圖\;\ref{fig:parallel2_3}\;中我們是用下列python語法來在選擇的格子內塗色\;:
+\begin{lstlisting}
+diagonal1 = patches.Polygon([(-0.5, -0.5), (0, -0.5), (0, 0)], closed=True, facecolor='lightblue')
+ax.add_patch(diagonal1)
+\end{lstlisting}
+
+
+\begin{figure}[H]
+\centering
+\subfloat[坐標軸在旁邊]{
+\includegraphics[scale=0.5]{poly_14.eps}}
+\subfloat[坐標軸在中間]{
+\includegraphics[scale=0.5]{poly_15.eps}}
+\caption{坐標軸在不同位置的呈現}
+\label{fig:parallel2_3}
+\end{figure}
+
+\section{專題}
+\subsection{級數}
+\begin{enumerate}
+\item 級數是指一連串數字的和，這些數字按照特定的規則進行排列。
+\item 級數通常表示為\;$S=a_1+a_2+\cdots +a_n+\cdots $+\;，其中，\;$a_n$\;表示級數中的第\;$n$\;項。
+\item 若級數\;$S$\;有一有限的極限值，我們說這個級數是收斂(Converge)的；反之，若\;$S$\;沒有一有限的極限值，我們稱這個級數是發散(Diverge)的。
+\item 常見的幾個重要級數\;:
+\subitem 調和級數\;：\;$1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\cdots$。
+\subitem 幾何級數\;：\;$1+x+x^2+x^3+\cdots$。
+\item 在級數\;\ref{eq:equation_12}\;中，我們首先有了函數\;$f(k)=\frac{1}{k}$\;，再把\;$k$\;從\;$1$\;加到\;$n$\;所得到\;$S_n=\sum_{k=1}^{n} \frac{1}{k}=1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}$\;。
+\end{enumerate}
+
+\subsection{黎曼和}
+黎曼和是一種將連續函數在一個區間上分割成無窮小的小矩形，並計算這些小矩形的面積之和來逼近積分的方法。\\
+對於一個函數\;$f(x)$\;在區間\;$[a,b]$\;上的積分，可以使用以下步驟來使用黎曼和進行近似計算\;：
+\begin{enumerate}
+\item 將區間\;$[a,b]$\;分成\;$n$\;個小區間，每個小區間的寬度為\;$\Delta x = \frac{b-a}{n}$\;。
+\item 在每個小區間\;$[x_i,x_{i+1}]$\;內選擇一個代表點\;$c_i$\;。
+\item 計算函數在每個代表點\;$c_i$\;處的函數值\;$f(c_i)$\;。
+\item 將每個小區間的寬度\;$\Delta x$\;與對應的函數值\;$f(c_i)$\;相乘，得到每個小矩形的面積，即\;$\Delta A_i = f(c_i) \times \Delta x$\;。
+\item 將所有小矩形的面積相加，得到近似的積分值\;：\\
+$S_n= \sum_{i=1}^n \Delta A_i = \sum_{i=1}^n f(c_i) \times \Delta x$，隨著分割的區間數\;$n$\;越來越多，黎曼和\;$S_n$\;會越來越趨近於實際的積分值。
+\item 舉例說明\;:假設\;n=16，則\;$S_n=\sum_{k=1}^{16} \frac{1}{k}=1+\frac{1}{2}+\frac{1}{3}+\cdots +\frac{1}{16}$\;
+圖形如下圖 \ref{fig:poly_21.eps}\;，黎曼和為把深綠色矩形面積相加，當\;$n \rightarrow \infty$\;時，黎曼和會等於級數和。
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{poly_21.eps}
+\caption{$S_n=\sum_{k=1}^{16} \frac{1}{k}=1+\frac{1}{2}+\frac{1}{3}+\cdots +\frac{1}{16}$}
+\label{fig:poly_21.eps}
+\end{figure} 
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{MD_1.jpg}
+\caption{Markdown證明}
+\label{fig:MD_1.jpg}
+\end{figure} 
+
+在圖\;\ref{fig:MD_1.jpg}\;中我們是用Markdown來寫出證明\;:
+\begin{lstlisting}
+## 證明
+
+首先，我們有一個級數：
+
+$$S_n = \sum_{k=1}^{n} \frac{1}{k} = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}$$
+
+接著，我們定義 $\gamma_n$ 為陰影區域的面積之和。
+現在我們要證明 $\gamma_n = S_n - \ln(n+1)$。
+
+### 步驟一：計算 $f(k)=\frac{1}{k}$ 函數底下的區域面積
+
+此區域是由橫軸、縱軸和曲線 $y = \frac{1}{x}$ 所圍成的，從 $x = 1$ 到 $x = n$。
+這個面積可以用定積分來計算：
+$$\gamma_n = \int_{1}^{n+1} \frac{1}{x} dx = \ln(n+1) - \ln(1) = \ln(n+1) - 0 = \ln(n+1)$$
+
+### 步驟二：將陰影區域的面積 $\gamma_n$ 與 $S_n$ 做比較
+
+$\gamma_n$ 與 $S_n$ 之間的關係是：
+$$\gamma_n = S_n - \ln(n+1) = \left(1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}\right) - \ln(n+1)$$
+
+因此，$\gamma_n =S_n - \ln(n+1)$
+\end{lstlisting}
+
+\subsection{比較定理}
+
+\begin{equation}
+S_n=\sum_{k=1}^{n} \frac{1}{k}=1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}
+\end{equation}\label{eq:equation_12}
+
+\begin{enumerate}
+\item $\lim_{n\rightarrow \infty} S_n$\;的意思是隨著\;$n$\;趨近無窮大時，\;$S_n$\;的極限。也就是說，隨著我們不斷地增加\;$n$\;，\;$S_n$\;會變得越來越大，當我們不斷增加\;$n$\;時\;$S_n$\;也會不斷增加，沒有盡頭，或者說\;$S_n$\;會趨近某個無窮大的值。\;$S_n$\;是一個很特別的數列，它隨著\;$S_n$\;的增加而增加，但增加的速度會逐漸變慢，最後增長率會趨近於零，但它不會停止增長。這表示\;$\lim_{n\rightarrow \infty} S_n$\;是無窮大的，也就是發散(Diverge)。
+
+\item 首先，我們有一個級數：$$S_n = \sum_{k=1}^{n} \frac{1}{k} = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}$$
+接著，我們定義 $\gamma_n$ 為陰影區域的面積(圖\;\ref{fig:parallel2_5}\;(a)\;中的粉色面積)之和。\\
+現在我們要證明 $\gamma_n = S_n - \ln(n+1)$\;:\\
+步驟一\;:\;計算\;$f(k)=\frac{1}{k}$\;函數底下的區域面積(圖\;\ref{fig:parallel2_5}\;(b)\;中的藍色面積)\\
+此區域是由橫軸、縱軸和曲線 $y = \frac{1}{x}$ 所圍成的，從 $x = 1$ 到 $x = n$。\\
+這個面積可以用定積分來計算：$$\gamma_n = \int_{1}^{n+1} \frac{1}{x} dx = \ln(n+1) - \ln(1) = \ln(n+1) - 0 = \ln(n+1)$$
+步驟二\;:\;將陰影區域的面積\;$\gamma_n$\;與 $S_n$ 做比較，$\gamma_n = \ln(n+1)$ 與 $S_n$ 之間的關係是：$$\gamma_n = S_n - \ln(n+1) = \left(1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}\right) - \ln(n+1)$$
+因此，$\gamma_n =S_n - \ln(n+1)$。
+
+\begin{figure}[H]
+\centering
+\subfloat[陰影區域\;$\gamma_n$\;]{
+\includegraphics[scale=0.41]{poly_22.eps}}
+\subfloat[函數底下的區域面積]{
+\includegraphics[scale=0.41]{poly_23.eps}}
+\caption{區域面積}
+\label{fig:parallel2_5}
+\end{figure}
+
+\item 我們想要證明:$$ \frac{1}{2}(1-\frac{1}{n+1})<\gamma_n < 1$$
+首先我們將陰影區域\;$\gamma_n$\;的面積拆成\;\ref{fig:parallel2_6}\;(a)\;中的粉色以及綠色兩部分。\\
+粉色部分為許多三角形，其相加起來的面積為\;:\\
+\;$\frac{1}{2} \times 1 \times \big[(1- \frac{1}{2})+(\frac{1}{2}- \frac{1}{3})+(\frac{1}{3}- \frac{1}{4})+ \cdots +(\frac{1}{2}- \frac{n-1}{n})+(\frac{1}{n}- \frac{1}{n+1})\big]$\\
+$=\frac{1}{2} \times 1 \times \big[(1- \frac{1}{n+1})\big]=\frac{1}{2} \big(1-\frac{1}{n+1}\big)$\;。\\
+由於圖\;\ref{fig:parallel2_6}\;(a)\;
+中的綠色部分面積(設為\;$A$\;)必\;$>0$\;，因此我們知道$$\gamma_n=A+\frac{1}{2} \big(1-\frac{1}{n+1}\big)>\frac{1}{2} \big(1-\frac{1}{n+1}\big)$$
+圖\;\ref{fig:parallel2_6}\;(b)\;中我們把函數\;$1$\;、\;$\gamma_n$\;，及\;$\frac{1}{2} \big(1-\frac{1}{n+1}\big)$\;畫在同一張圖上，我們可以很明顯地看出\;$ \frac{1}{2}(1-\frac{1}{n+1})<\gamma_n < 1$\;。
+
+\begin{figure}[H]
+    \centering
+    \subfloat[分解$\gamma_n$的區域面積]{
+        \includegraphics[scale=0.55]{poly_24.eps}
+    }
+    \subfloat[函數比較]{
+        \includegraphics[scale=0.356]{poly_25.eps}
+    }
+    \caption{區域面積的比較}
+    \label{fig:parallel2_6}
+\end{figure}
+
+\end{enumerate}
+
+
+
+\textbf{結論\;:}\\
+透過上面的所有數學函數，我們可以深入瞭解不同數學函數的圖形與特性，得以探索數學世界的奧妙之處，並透過圖形來更加清楚明白數學式的特色。每個函數所呈現的獨特規律與特性，都彷彿是數學世界中的謎題，等待著我們解開，這種探索與學習的過程，不僅能拓展我們的數學視野，也能啟發出更多創新且美妙的數學應用。這也提醒我們，數學不僅僅是冷冰冰的數字和符號，背後蘊藏著無窮的創意和可能性，等待我們去發現和探索。當我們找出數學函數每個的特性之後，會覺得數學變有趣非常多\;!
+
+
+\end{document}
